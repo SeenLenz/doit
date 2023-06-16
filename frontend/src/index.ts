@@ -1,2 +1,5 @@
-import _ from "lodash";
-import "./style/style.scss";
+import "./style.scss";
+
+document.querySelector(".scrollbar").addEventListener("scroll", (e) => {
+  console.log(e);
+});

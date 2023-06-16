@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$dark-base-text: #fffbf0;
+$dark-base-background: #1a1a1a;
+$dark-base-primarybt: #ff9500;
+$dark-base-secondarybt: #313036;
+$dark-base-accent: #8215cb;
+
+$row-size: 45px;
+$collumn-size: calc(45px * $row-size);
+
+@mixin text {
+  font-family: "Inter", sans-serif;
+  color: $dark-base-text;
+}
+
+@mixin heading {
+  font-family: "Poppins", sans-serif;
+  color: $dark-base-text;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav {
+  background-color: $dark-base-secondarybt;
+  height: 60px;
+  bottom: 12px;
+  border-radius: 6px;
+  position: fixed;
+  width: calc(100vw - 66px);
+  z-index: 2;
+}
+.gradient {
+  position: fixed;
+  bottom: 0px;
+  width: calc(100vw - 66px);
+  height: 120px;
+  background: linear-gradient(
+    0deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(0, 136, 255, 0) 100%
+  ); /* New Background */
+  z-index: 1;
+  pointer-events: none;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  padding: 12px;
+  background-color: $dark-base-background;
+  grid-template-rows: 1fr 30px;
+  grid-template-columns: 1fr 30px;
+  grid-template-areas:
+    "main scrollbar"
+    "main scrollbar";
+  gap: 12px;
+  z-index: 0;
+
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header "
+      "main";
+    gap: 12px;
+    z-index: 1;
+    overflow-x: scroll;
+
+    .header {
+      grid-area: header;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(7, minmax(245px, 1fr));
+      gap: 12px;
+
+      .collumn-header {
+        background-color: $dark-base-secondarybt;
+        border-radius: 6px;
+      }
+    }
+    .collumns::-webkit-scrollbar {
+      display: none;
+    }
+    .collumns {
+      scrollbar-width: none;
+      display: grid;
+      grid-area: main;
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(7, minmax(245px, 1fr));
+      gap: 12px;
+      overflow: scroll;
+
+      .collumn {
+        position: relative;
+        background-color: $dark-base-secondarybt;
+        border-radius: 6px;
+        height: 1500px;
+        margin-bottom: 60px;
+        cursor: pointer;
+
+        .task {
+          position: absolute;
+          background-color: #ff9500;
+          width: 100%;
+          height: 110px;
+          top: 60px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
+  .scrollbar {
+    grid-area: scrollbar;
+    background-color: $dark-base-secondarybt;
+    border-radius: 6px;
+  }
+}
