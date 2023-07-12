@@ -1,42 +1,36 @@
-// use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use sqlx::{PgPool, Pool, Postgres};
 
-// #[get("/")]
-// async fn hello() -> impl Responder {
-//     HttpResponse::Ok().body("Hello world!")
-// }
+mod api;
+mod model;
+mod strcts;
 
-// #[post("/echo")]
-// async fn echo(req_body: String) -> impl Responder {
-//     HttpResponse::Ok().body(req_body)
-// }
+use ::config::Config;
+use api::event::{event_create, event_get, event_update};
+use api::state::{state_create, state_get, state_update};
+use api::task::{task_create, task_get, task_update};
+use api::usr::{usr_auth, usr_create, usr_update};
+use std::env;
 
-// async fn manual_hello() -> impl Responder {
-//     HttpResponse::Ok().body("Hey there!")
-// }
+pub struct AppState {
+    pg: Pool<Postgres>,
+}
 
-// async fn thjing() -> impl Responder {
-//     HttpResponse::NotFound().body("404")
-// }
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    dotenvy::from_filename("./src/.env.dev").unwrap();
 
-// #[actix_web::main]
-// async fn main() -> std::io::Result<()> {
-//     HttpServer::new(|| {
-//         App::new()
-//             .service(hello)
-//             .service(echo)
-//             .route("/hey", web::get().to(manual_hello))
-//             .route("/penis", web::get().to(thjing))
-//     })
-//     .bind(("127.0.0.1", 8080))?
-//     .run()
-//     .await
-// }
-use postgres::{Client, NoTls};
+    let dburl = env::var("DATABASE_URL").expect("failed to fetch connection URL");
+    println!("\n{}\n", &dburl);
+    let pool = PgPool::connect(&dburl).await.unwrap();
 
-fn main() -> Result<(), postgres::Error> {
-    let mut connection = Client::connect("host=127.0.0.1 port=5432 dbname=postgres user=postgres password=root sslmode=prefer connect_timeout=10", NoTls)?;
-    
-    // Use the client for database operations
-    
-    Ok(())
+    HttpServer::new(move || {
+        App::new()
+            .app_data(web::Data::new(AppState { pg: pool.clone() }))
+            .service(task_get)
+            .service(usr_create)
+    })
+    .bind(("127.0.0.1", 8000))?
+    .run()
+    .await
 }
