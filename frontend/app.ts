@@ -1,11 +1,12 @@
 import "./style.scss";
-import scrollsync from "./components/scrollbar";
-import { Renderer } from "./services/Renderer";
-import { Router } from "./services/Router";
-import { Events } from "./services/Events";
-import { Api } from "./services/Api";
+import scrollsync from "./src/components/Scrollbar";
+import { Renderer } from "./src/services/Renderer";
+import { Router } from "./src/services/Router";
+import { Events } from "./src/services/Events";
+import { Api } from "./src/services/Api";
 
 const app: App = {};
+
 app.renderer = Renderer;
 app.router = Router;
 app.events = Events;

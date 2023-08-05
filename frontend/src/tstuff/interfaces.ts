@@ -10,7 +10,9 @@ interface Router {
   init: () => void;
 }
 interface Api {
+  date: Date;
   init: () => Promise<void>;
+  load_page: () => void;
 }
 interface Events {
   init: () => void;

@@ -9,7 +9,6 @@ export const Events = {
     document
       .querySelector(".append_bt")
       .addEventListener("click", this.AppendToCal());
-    console.log(this);
   },
   SyncScrollbars: function (element1: HTMLElement, element2: HTMLElement) {
     element1.addEventListener("scroll", (e: Event) => {
@@ -27,4 +26,7 @@ export const Events = {
   NextPage: function (e: Event) {},
   PreviousPage: function (e: Event) {},
   AppendToCal: function (e: Event) {},
+  CheckboxCheck: function (e: Event) {
+    console.log(e);
+  },
 };

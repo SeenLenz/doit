@@ -25,13 +25,437 @@ $collumn-size: calc(45px * $row-size);
   padding: 0;
   box-sizing: border-box;
 }
+
+.header-date-wrapper {
+  height: 60px;
+  padding: 6px;
+  display: flex;
+  font-family: "Poppins";
+  color: white;
+
+  .header-date {
+    min-width: 100px;
+    padding: 6px;
+    word-spacing: -10px;
+    text-overflow: clip;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .header-date-num {
+      font-size: 38px;
+    }
+
+    .header-date-name {
+      text-transform: uppercase;
+    }
+  }
+  .header-date-tags {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #1a1a1a;
+    border-radius: 6px;
+    padding-left: 4px;
+
+    .header-date-tags-wrapper-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header-date-tags-wrapper-inner {
+      height: calc(100% - 9px);
+      width: 100%;
+      position: relative;
+      border-radius: 6px;
+      overflow: scroll;
+
+      .header-date-tags-wrapper-inner-constraint {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2px;
+        width: calc(100% - 18px);
+      }
+
+      .header-tag {
+        border-radius: 6px;
+        height: 18px;
+        width: fit-content;
+        padding: 0px 6px;
+        background-color: rgb(255, 123, 0);
+        font-family: "Poppins";
+        color: white;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.event-wrapper {
+  width: 100%;
+  background-color: #ff9500;
+  border-radius: 6px;
+  z-index: 2;
+  position: absolute;
+
+  .event-header-wrapper {
+    height: 54px;
+    width: 100%;
+    padding: 6px 6px 0px 6px;
+    gap: 6px;
+    display: grid;
+    grid-template-columns: 3fr 1.45fr;
+    grid-template-areas: "title duration";
+
+    .event-title {
+      border-radius: 6px;
+      padding: 0px 6px 0px 6px;
+      background-color: #252527;
+      grid-area: title;
+      font-size: 14px;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      align-items: center;
+      color: $dark-base-text;
+      font-family: "Poppins";
+
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .event-duration {
+      border-radius: 6px;
+      background-color: #252527;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-weight: 400;
+      grid-area: duration;
+      color: $dark-base-text;
+      font-family: "Poppins";
+      position: relative;
+
+      .event-duration-from {
+        font-size: 14px;
+        text-align: center;
+      }
+      .event-duration-to {
+        text-align: center;
+        font-size: 14px;
+        margin-top: -8px;
+      }
+
+      .moreoptions {
+        text-orientation: sideways;
+        position: absolute;
+        bottom: -6px;
+        color: #979797;
+        font-size: 26px;
+      }
+    }
+
+    .event-moreoptions {
+      border-radius: 6px;
+      padding: 0px 6px 0px 6px;
+      text-align: center;
+      background-color: #272625;
+      grid-area: moreoptions;
+      color: $dark-base-text;
+      font-family: "Poppins";
+    }
+  }
+
+  .event-tags-wrapper {
+    min-height: 30px;
+    width: 100%;
+    padding: 6px;
+    background-color: rgb(252, 166, 6);
+
+    .event-tags-wrapper-inner {
+      background-color: #1a1a1a;
+      padding: 6px;
+      min-height: 27px;
+      height: fit-content;
+      position: relative;
+      border-radius: 6px;
+
+      .event-tags-wrapper-inner-constraint {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        width: calc(100% - 18px);
+      }
+
+      .event-tag {
+        border-radius: 6px;
+        height: 18px;
+        width: fit-content;
+        padding: 0px 6px;
+        background-color: rgb(255, 123, 0);
+        font-family: "Poppins";
+        color: white;
+        font-size: 12px;
+      }
+
+      .event-addtag {
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+      }
+    }
+  }
+
+  .event-body-wrapper {
+    min-height: 30px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .event-body-subevent {
+      background-color: #696969;
+      border-radius: 6px;
+      height: 48px;
+      padding: 6px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .event-body-name {
+        font-family: "Poppins";
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .checkbox {
+        width: 25px;
+        height: 25px;
+        background-color: grey;
+        border: 1px rgb(146, 146, 146) solid;
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          opacity: 0;
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .checkbox[data-checked="true"] {
+        img {
+          opacity: 1;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.task-wrapper {
+  width: 100%;
+  background-color: #ff9500;
+  border-radius: 6px;
+  z-index: 2;
+  position: absolute;
+
+  .task-header-wrapper {
+    height: 54px;
+    width: 100%;
+    padding: 6px 6px 0px 6px;
+    gap: 6px;
+    display: grid;
+    grid-template-columns: 3fr 1.45fr;
+    grid-template-areas: "title duration";
+
+    .task-title {
+      border-radius: 6px;
+      padding: 0px 6px 0px 6px;
+      background-color: #252527;
+      grid-area: title;
+      font-size: 14px;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      align-items: center;
+      color: $dark-base-text;
+      font-family: "Poppins";
+
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .task-duration {
+      border-radius: 6px;
+      background-color: #252527;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      font-size: 26px;
+      grid-area: duration;
+      color: $dark-base-text;
+      font-family: "Poppins";
+      position: relative;
+
+      .moreoptions {
+        text-orientation: sideways;
+        position: absolute;
+        bottom: -6px;
+        color: #979797;
+      }
+    }
+
+    .task-moreoptions {
+      border-radius: 6px;
+      padding: 0px 6px 0px 6px;
+      text-align: center;
+      background-color: #272625;
+      grid-area: moreoptions;
+      color: $dark-base-text;
+      font-family: "Poppins";
+    }
+  }
+
+  .task-tags-wrapper {
+    min-height: 30px;
+    width: 100%;
+    padding: 6px;
+    background-color: rgb(252, 166, 6);
+
+    .task-tags-wrapper-inner {
+      background-color: #1a1a1a;
+      padding: 6px;
+      min-height: 27px;
+      height: fit-content;
+      position: relative;
+      border-radius: 6px;
+
+      .task-tags-wrapper-inner-constraint {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        width: calc(100% - 18px);
+      }
+
+      .task-tag {
+        border-radius: 6px;
+        height: 18px;
+        width: fit-content;
+        padding: 0px 6px;
+        background-color: rgb(255, 123, 0);
+        font-family: "Poppins";
+        color: white;
+        font-size: 12px;
+      }
+
+      .task-addtag {
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+      }
+    }
+  }
+
+  .task-body-wrapper {
+    min-height: 30px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .task-body-subtask {
+      background-color: #696969;
+      border-radius: 6px;
+      height: 33px;
+      padding: 6px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .task-body-name {
+        font-family: "Poppins";
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .checkbox {
+        width: 25px;
+        height: 25px;
+        background-color: grey;
+        border: 1px rgb(146, 146, 146) solid;
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          opacity: 0;
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .checkbox[data-checked="true"] {
+        img {
+          opacity: 1;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
 nav {
   background-color: $dark-base-secondarybt;
   height: 60px;
-  bottom: 12px;
+  bottom: 6px;
   border-radius: 6px;
   position: fixed;
-  width: calc(100vw - 66px);
+  width: calc(100vw - 48px);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -55,7 +479,7 @@ nav {
 .gradient {
   position: fixed;
   bottom: 0px;
-  width: calc(100vw - 66px);
+  width: calc(100vw - 48px);
   height: 120px;
   background: linear-gradient(
     0deg,
@@ -69,14 +493,14 @@ body {
   height: 100vh;
   width: 100vw;
   display: grid;
-  padding: 12px;
+  padding: 6px;
   background-color: $dark-base-background;
   grid-template-rows: 1fr 30px;
   grid-template-columns: 1fr 30px;
   grid-template-areas:
     "main scrollbar"
     "main scrollbar";
-  gap: 12px;
+  gap: 6px;
   z-index: 0;
 
   main::-webkit-scrollbar {
@@ -99,8 +523,9 @@ body {
     grid-template-columns: 1fr;
     grid-template-areas:
       "header "
+      "states"
       "main";
-    gap: 12px;
+    gap: 6px;
     z-index: 1;
     overflow-x: scroll;
 
@@ -109,13 +534,20 @@ body {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: repeat(7, minmax(245px, 1fr));
-      gap: 12px;
+      gap: 6px;
 
       .collumn-header {
         background-color: $dark-base-secondarybt;
         border-radius: 6px;
       }
     }
+
+    .state {
+      background-color: rgb(113, 0, 0);
+      height: 18px;
+      border-radius: 6px;
+    }
+
     .collumns::-webkit-scrollbar {
       display: none;
     }
@@ -125,8 +557,9 @@ body {
       grid-area: main;
       grid-template-rows: 1fr;
       grid-template-columns: repeat(7, minmax(245px, 1fr));
-      gap: 12px;
+      gap: 6px;
       overflow: scroll;
+      border-radius: 6px;
 
       .collumn {
         position: relative;
