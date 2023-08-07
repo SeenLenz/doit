@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-date-wrapper {
+  height: 60px;
+  padding: 6px;
+  display: flex;
+  font-family: "Poppins";
+  color: rgb(166, 166, 166);
+}
+.header-date-wrapper .header-date {
+  min-width: 100px;
+  padding: 6px;
+  word-spacing: -10px;
+  text-overflow: clip;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-date-wrapper .header-date .header-date-num {
+  font-size: 38px;
+}
+.header-date-wrapper .header-date .header-date-name {
+  text-transform: uppercase;
+}
+.header-date-wrapper .header-date-tags {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 6px;
+  padding-left: 4px;
+}
+.header-date-wrapper .header-date-tags .header-date-tags-wrapper-inner::-webkit-scrollbar {
+  display: none;
+}
+.header-date-wrapper .header-date-tags .header-date-tags-wrapper-inner {
+  height: calc(100% - 9px);
+  width: 100%;
+  position: relative;
+  border-radius: 6px;
+  overflow: scroll;
+}
+.header-date-wrapper .header-date-tags .header-date-tags-wrapper-inner .header-date-tags-wrapper-inner-constraint {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2px;
+  width: calc(100% - 18px);
+}
+.header-date-wrapper .header-date-tags .header-date-tags-wrapper-inner .header-tag {
+  border-radius: 6px;
+  height: 18px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0px 6px;
+  background-color: rgb(255, 123, 0);
+  font-family: "Poppins";
+  color: white;
+  font-size: 12px;
+}
+
+nav {
+  background-color: rgb(63, 62, 68);
+  height: 60px;
+  bottom: 6px;
+  border-radius: 6px;
+  position: fixed;
+  width: calc(100vw - 48px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+nav .append_things {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 1px transparent solid;
+  cursor: pointer;
+  background-color: #252527;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .append_things .logo {
+  width: 80%;
+  height: 80%;
+}
+
+.gradient {
+  position: fixed;
+  bottom: 0px;
+  width: calc(100vw - 48px);
+  height: 120px;
+  background: linear-gradient(0deg, rgb(26, 26, 26) 0%, rgba(0, 136, 255, 0) 100%); /* New Background */
+  z-index: 1;
+  pointer-events: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  padding: 6px;
+  background-color: rgb(26, 26, 26);
+  grid-template-rows: 1fr 30px;
+  grid-template-columns: 1fr 30px;
+  grid-template-areas: "main scrollbar" "main scrollbar";
+  gap: 6px;
+  z-index: 0;
+}
+body main::-webkit-scrollbar {
+  display: none;
+}
+body .button {
+  border: transparent 0px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 12px;
+  background-color: #1a1a1a;
+  color: white;
+}
+body main {
+  scrollbar-width: none;
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header " "states" "main";
+  gap: 6px;
+  z-index: 1;
+  overflow-x: scroll;
+}
+body main .header {
+  grid-area: header;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7, minmax(245px, 1fr));
+  gap: 6px;
+}
+body main .header .collumn-header {
+  background-color: rgb(63, 62, 68);
+  border-radius: 6px;
+}
+body main .collumns::-webkit-scrollbar {
+  display: none;
+}
+body main .collumns {
+  scrollbar-width: none;
+  display: grid;
+  grid-area: main;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7, minmax(245px, 1fr));
+  grid-template-areas: "states" "collumns";
+  gap: 6px;
+  overflow: scroll;
+  border-radius: 6px;
+  margin-top: -6px;
+}
+body main .collumns .collumn {
+  position: relative;
+  background-color: rgb(63, 62, 68);
+  border-radius: 6px;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 60px;
+  cursor: pointer;
+}
+body main .collumns .collumn .line {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #808082;
+}
+body .scrollbar::-webkit-scrollbar {
+  display: none;
+}
+body .scrollbar {
+  grid-area: scrollbar;
+  background-color: rgb(63, 62, 68);
+  border-radius: 6px;
+  padding: 66px 0px 66px 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body .scrollbar hr {
+  width: 80%;
+  border: 1px solid #808082;
+  border-radius: 6px;
+}
+body .scrollbar .timestamp-wrapper {
+  position: relative;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .scrollbar .timestamp-wrapper .timestamp {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  color: #808082;
+  font-size: 12px;
+  position: relative;
+}
+body .scrollbar .timestamp-wrapper .timestamp .timestamp-hour {
+  display: block;
+}
+body .scrollbar .timestamp-wrapper .timestamp .line {
+  background-color: #808082;
+  width: 14px;
+  height: 1px;
+  border-radius: 6px;
+}
+body .scrollbar .timestamp-wrapper .timestamp .timestamp-min {
+  display: block;
+}/*# sourceMappingURL=style.css.map */

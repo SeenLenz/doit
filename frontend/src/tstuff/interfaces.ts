@@ -1,33 +1,33 @@
-interface App {
+export interface AppTS {
   init?: () => void;
-  scopes?: Scopes;
-  router?: Router;
-  renderer?: Renderer;
-  events?: Events;
-  api?: Api;
+  scopes?: ScopesTS;
+  router?: RouterTS;
+  renderer?: RendererTS;
+  events?: EventsTS;
+  api?: ApiTS;
 }
-interface Router {
+export interface RouterTS {
   init: () => void;
 }
-interface Api {
+export interface ApiTS {
   date: Date;
   init: () => Promise<void>;
   load_page: () => void;
 }
-interface Events {
+export interface EventsTS {
   init: () => void;
   SyncScrollbars: (scrollbar1: HTMLElement, scrollbar2: HTMLElement) => void;
   NextPage: (e: Event) => void;
   PreviousPage: (e: Event) => void;
   AppendToCal: (e: Event) => void;
 }
-interface Renderer {
-  init: (Scopes: Scopes) => void;
+export interface RendererTS {
+  init: (Scopes: ScopesTS) => void;
   UpdateRow: (rownum: number, val: number) => void;
   ignoreScrollEvents: Boolean;
 }
 
-interface Scopes {
+export interface ScopesTS {
   collumns: HTMLElement;
   scrollbar: HTMLElement;
   timestamps: NodeListOf<HTMLElement>;

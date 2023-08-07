@@ -1,4 +1,7 @@
-export const Renderer: Renderer = {
+import { ScopesTS } from "../tstuff/interfaces";
+import { RendererTS } from "../tstuff/interfaces";
+
+export const Renderer: RendererTS = {
   ignoreScrollEvents: true,
 
   UpdateRow: function (rownum: number, val: number): void {
@@ -9,7 +12,7 @@ export const Renderer: Renderer = {
     temp.style.marginBottom = val * 61 - temp.offsetHeight + "px";
   },
 
-  init: function (Scopes: Scopes) {
+  init: function (Scopes: ScopesTS) {
     Scopes.timestamps.forEach((e: HTMLElement, i: number) => {
       e.children[0].textContent = i + "";
       e.id = "timestamp" + i;
