@@ -96,10 +96,11 @@ $collumn-size: calc(45px * $row-size);
 
 .event-wrapper {
   width: 100%;
-  background-color: #ff9500;
+  background-color: orange;
   border-radius: 6px;
   z-index: 2;
   position: absolute;
+  height: 399px;
 
   .event-header-wrapper {
     height: 54px;
@@ -143,20 +144,16 @@ $collumn-size: calc(45px * $row-size);
       font-family: "Poppins";
       position: relative;
 
-      .event-duration-from {
-        font-size: 14px;
+      p {
         text-align: center;
+        font-size: 16px;
+        width: 100%;
+        line-height: 18px;
       }
-      .event-duration-to {
-        text-align: center;
-        font-size: 14px;
-        margin-top: -8px;
-      }
-
       .moreoptions {
-        text-orientation: sideways;
         position: absolute;
-        bottom: -6px;
+        transform: rotateZ(90deg);
+        right: -6px;
         color: #979797;
         font-size: 26px;
       }
@@ -281,7 +278,7 @@ $collumn-size: calc(45px * $row-size);
   width: 100%;
   background-color: #ff9500;
   border-radius: 6px;
-  z-index: 2;
+  z-index: 5;
   position: absolute;
 
   .task-header-wrapper {
@@ -327,10 +324,11 @@ $collumn-size: calc(45px * $row-size);
       position: relative;
 
       .moreoptions {
-        text-orientation: sideways;
         position: absolute;
-        bottom: -6px;
+        transform: rotateZ(90deg);
+        right: -6px;
         color: #979797;
+        font-size: 26px;
       }
     }
 
@@ -396,10 +394,13 @@ $collumn-size: calc(45px * $row-size);
     border-radius: 6px;
     padding: 6px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 6px;
+    width: 100%;
 
     .task-body-subtask {
+      max-width: 233px;
       background-color: #696969;
       border-radius: 6px;
       height: 33px;
@@ -421,8 +422,9 @@ $collumn-size: calc(45px * $row-size);
       }
 
       .checkbox {
-        width: 25px;
-        height: 25px;
+        @include text();
+        width: 21px;
+        height: 21px;
         background-color: grey;
         border: 1px rgb(146, 146, 146) solid;
         border-radius: 6px;
