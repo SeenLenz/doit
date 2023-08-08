@@ -10,8 +10,8 @@ export const Events = {
       .querySelector(".append_bt")
       .addEventListener("click", this.AppendToCal());
   },
-  SyncScrollbars: function (element1: HTMLElement, element2: HTMLElement) {
-    element1.addEventListener("scroll", (e: Event) => {
+  SyncScrollbars: function (element1, element2) {
+    element1.addEventListener("scroll", (e) => {
       var ignore = this.ignoreScrollEvents;
 
       if (ignore) {
@@ -23,10 +23,10 @@ export const Events = {
       element2.scrollTop = element1.scrollTop;
     });
   },
-  NextPage: function (e: Event) {},
-  PreviousPage: function (e: Event) {},
-  AppendToCal: function (e: Event) {},
-  CheckboxCheck: function (e: Event) {
+  NextPage: function (e) {},
+  PreviousPage: function (e) {},
+  AppendToCal: function (e) {},
+  CheckboxCheck: function (e) {
     console.log(e);
   },
 };

@@ -1,3 +1,5 @@
+import { EventElement } from "../components/Event";
+
 export const Api = {
   host: "http://127.0.0.1:8000/",
   date: new Date(),
@@ -21,7 +23,13 @@ export const Api = {
       }-${right.getDate()}`
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) =>
+        data.map((element) => {
+          if (element.type == "event") {
+            console.log(element);
+          }
+        })
+      );
   },
   load_page: async function () {},
 };

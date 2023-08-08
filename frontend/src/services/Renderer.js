@@ -1,19 +1,16 @@
-import { ScopesTS } from "../tstuff/interfaces";
-import { RendererTS } from "../tstuff/interfaces";
-
-export const Renderer: RendererTS = {
+export const Renderer = {
   ignoreScrollEvents: true,
 
-  UpdateRow: function (rownum: number, val: number): void {
-    document.querySelectorAll<HTMLElement>(`#line${rownum}`).forEach((e) => {
+  UpdateRow: function (rownum, val) {
+    document.querySelectorAll(`#line${rownum}`).forEach((e) => {
       e.style.marginBottom = val * 61 + "px";
     });
-    let temp = document.querySelector<HTMLElement>(`#timestamp${rownum}`);
+    let temp = document.querySelector(`#timestamp${rownum}`);
     temp.style.marginBottom = val * 61 - temp.offsetHeight + "px";
   },
 
-  init: function (Scopes: ScopesTS) {
-    Scopes.timestamps.forEach((e: HTMLElement, i: number) => {
+  init: function (Scopes) {
+    Scopes.timestamps.forEach((e, i) => {
       e.children[0].textContent = i + "";
       e.id = "timestamp" + i;
       e.style.top = `${-e.offsetHeight / 2}px`;
@@ -21,8 +18,8 @@ export const Renderer: RendererTS = {
     });
 
     const fragment = document.createDocumentFragment();
-    document.querySelectorAll<HTMLElement>(".collumn").forEach((e, i) => {
-      let line: HTMLDivElement = document.createElement("div");
+    document.querySelectorAll(".collumn").forEach((e, i) => {
+      let line = document.createElement("div");
       line.className = "line";
       line.id = `line0`;
       line.style.marginBottom = `${60}px`;
@@ -30,7 +27,7 @@ export const Renderer: RendererTS = {
       fragment.appendChild(line);
 
       for (let index = 1; index < 25; index++) {
-        let line: HTMLDivElement = document.createElement("div");
+        let line = document.createElement("div");
         line.className = "line";
         line.id = `line${index}`;
         line.style.marginBottom = `${60}px`;
